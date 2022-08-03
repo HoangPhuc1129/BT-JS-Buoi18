@@ -73,7 +73,7 @@ function demSoDuong() {
 function soNhoNhat() {
   let tagSo = laySo();
 
-  //Dùng For chưa được,đã được
+  //Dùng For
   // let tagSoNhoNhat = tagSo[0];
   // for (let i = 1; i < tagSo.length; i++) {
   //   if (tagSo[i] < tagSoNhoNhat) {
@@ -170,27 +170,28 @@ function doiViTri(array, viTri1, viTri2) {
 //Sắp Xếp Tăng Dần
 function sapXep() {
   let tagSo = laySo();
-  //Dùng for
-  let soHang = 0;
-  for (let i = 0; i < tagSo.length; i++) {
-    for (let j = 0; j < tagSo.length; j++) {
-      if (tagSo[i] < tagSo[j]) {
-        soHang = tagSo[i];
-        tagSo[i] = tagSo[j];
-        tagSo[j] = soHang;
-      }
-    }
-  }
 
-  document.getElementById("ketQua7").value = "Mảng sau khi sắp xếp :" + tagSo;
+  //Dùng for
+  // let soHang = 0;
+  // for (let i = 0; i < tagSo.length; i++) {
+  //   for (let j = 0; j < tagSo.length; j++) {
+  //     if (tagSo[i] < tagSo[j]) {
+  //       soHang = tagSo[i];
+  //       tagSo[i] = tagSo[j];
+  //       tagSo[j] = soHang;
+  //     }
+  //   }
+  // }
+
+  // document.getElementById("ketQua7").value = "Mảng sau khi sắp xếp :" + tagSo;
 
   //Dùng hàm sort
-  // let mangTangDan = tagSo.sort((a, b) => a - b);
-  // document.getElementById("ketQua7").value =
-  //   "Mảng sau khi sắp xếp :" + mangTangDan;
+  let mangTangDan = tagSo.sort((a, b) => a - b);
+  document.getElementById("ketQua7").value =
+    "Mảng sau khi sắp xếp :" + mangTangDan;
 }
 
-//Tìm Số Nguyên Tố Đầu Tiên chưa xong
+//Tìm Số Nguyên Tố Đầu Tiên
 function kiemtraSNT(value) {
   if (value < 2) {
     return false;
@@ -243,20 +244,20 @@ function soSanh() {
   let soDuong = 0;
   //Dùng for
 
-  // for (let i = 0; i < tagSo.length; i++) {
-  //   if (tagSo[i] === 0) {
-  //     continue;
-  //   } else if (tagSo[i] > 0) {
-  //     soDuong++;
-  //   } else {
-  //     soAm++;
-  //   }
-  // }
+  for (let i = 0; i < tagSo.length; i++) {
+    if (tagSo[i] === 0) {
+      continue;
+    } else if (tagSo[i] > 0) {
+      soDuong++;
+    } else {
+      soAm++;
+    }
+  }
 
   //Dùng filter
-  let phanLoaiSoAmDuong = tagSo.filter((value) =>
-    value < 0 ? soAm++ : soDuong++
-  );
+  // let phanLoaiSoAmDuong = tagSo.filter((value) =>
+  //   value < 0 ? soAm++ : soDuong++
+  // );
 
   if (soDuong > soAm) {
     return (document.getElementById("ketQua10").value = "Số Dương > Số Âm");

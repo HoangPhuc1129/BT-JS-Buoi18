@@ -163,10 +163,11 @@ function doiCho() {
   document.getElementById("ketQua6").value = "Vị Trí Sau Khi Đổi: " + tagSo;
 }
 function doiViTri(array, viTri1, viTri2) {
-  let soHang = array[viTri1 - 1];
-  array[viTri1 - 1] = array[viTri2 - 1];
-  array[viTri2 - 1] = soHang;
+  let soHang = array[viTri1];
+  array[viTri1] = array[viTri2];
+  array[viTri2] = soHang;
 }
+
 //Sắp Xếp Tăng Dần
 function sapXep() {
   let tagSo = laySo();
@@ -196,7 +197,7 @@ function kiemtraSNT(value) {
   if (value < 2) {
     return false;
   }
-  for (let i = 2; i < value - 1; i++) {
+  for (let i = 2; i < value; i++) {
     if (value % i === 0) {
       return false;
     }
@@ -220,19 +221,19 @@ function demSoNguyen() {
   let tagSo = laySo();
   let soNguyen = 0;
   //Dùng for
-  // for (let i = 0; i < tagSo.length; i++) {
-  //   if (Number.isInteger(tagSo[i])) {
-  //     soNguyen++;
-  //   }
-  // }
+  for (let i = 0; i < tagSo.length; i++) {
+    if (Number.isInteger(tagSo[i])) {
+      soNguyen++;
+    }
+  }
 
   //Dùng forEach
   // tagSo.forEach((value) => (Number.isInteger(value) ? soNguyen++ : value));
 
   //Dùng filter
-  let tagSoNguyen = tagSo.filter((value) =>
-    Number.isInteger(value) ? soNguyen++ : value
-  );
+  // let tagSoNguyen = tagSo.filter((value) =>
+  //   Number.isInteger(value) ? soNguyen++ : value
+  // );
 
   document.getElementById("ketQua9").value = "Số Nguyên : " + soNguyen;
 }
@@ -266,4 +267,16 @@ function soSanh() {
   } else {
     return (document.getElementById("ketQua10").value = "Số Dương = Số Âm");
   }
+
+  // switch (true) {
+  //   case soDuong > soAm:
+  //     document.getElementById("ketQua10").value = "Số Dương > Số Âm";
+  //     break;
+  //   case soDuong < soAm:
+  //     document.getElementById("ketQua10").value = "Số Dương < Số Âm";
+  //     break;
+  //   default:
+  //     document.getElementById("ketQua10").value = "Số Dương = Số Âm";
+  //     break;
+  // }
 }
